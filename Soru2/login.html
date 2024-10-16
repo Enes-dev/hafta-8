@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Sayfası</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        #loginButton {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        #loginModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            border-radius: 8px;
+        }
+        #modalBackground {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <button id="loginButton">Giriş Yap</button>
+
+    <div id="modalBackground"></div>
+    <div id="loginModal">
+        <h2>Giriş Formu</h2>
+        <label for="username">Kullanıcı Adı:</label>
+        <input type="text" id="username" placeholder="Kullanıcı Adı"><br><br>
+        <label for="password">Şifre:</label>
+        <input type="password" id="password" placeholder="Şifre"><br><br>
+        <button id="submitButton">Gönder</button>
+        <button id="closeButton">Kapat</button>
+    </div>
+
+    <script>
+        const loginButton = document.getElementById('loginButton');
+        const modalBackground = document.getElementById('modalBackground');
+        const loginModal = document.getElementById('loginModal');
+        const closeButton = document.getElementById('closeButton');
+
+        loginButton.onclick = function() {
+            modalBackground.style.display = 'block';
+            loginModal.style.display = 'block';
+        };
+
+        closeButton.onclick = function() {
+            modalBackground.style.display = 'none';
+            loginModal.style.display = 'none';
+        };
+
+        modalBackground.onclick = function() {
+            modalBackground.style.display = 'none';
+            loginModal.style.display = 'none';
+        };
+
+        document.getElementById('submitButton').onclick = function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Kullanıcı adı ve şifre doğrulama
+            if (username === "eendemiir" && password === "demir567820") {
+                alert("Giriş Başarılı!");
+            } else {
+                alert("Kullanıcı adı veya şifre hatalı.");
+            }
+
+            // Modalı kapat
+            modalBackground.style.display = 'none';
+            loginModal.style.display = 'none';
+        };
+    </script>
+</body>
+</html>

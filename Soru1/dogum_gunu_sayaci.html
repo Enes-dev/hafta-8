@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doğum Günü Sayacı</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-size: 1.5em;
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown"></div>
+
+    <script>
+        const birthday = new Date('2024-12-25T00:00:00');
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeDifference = birthday - now;
+
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').textContent = 
+                `${days} gün, ${hours} saat, ${minutes} dakika, ${seconds} saniye kaldı.`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();  // İlk anlık güncelleme
+    </script>
+</body>
+</html>
